@@ -7,10 +7,12 @@ import cv2
 from pyautogui import click, position
 import time
 
-gameCoords = [corner1, corner2, corner3, corner4] #coordinats to play within
+FAILSAFE() = True
 
 screen = np.array(ImageGrab.grab(bbox=gameCoords))
 screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+
+gameCoords = [463, 107, 890, 535] #x and y coordinats to play within
 
 while True:
 #    onScreen(x, y)
