@@ -16,12 +16,13 @@ time.sleep(3)
 gameCoords = [463, 107, 890, 535] #(left_x, top_y, right_x, bottom_y)
 
 while True:
-#    onScreen(x, y)
-    mousePos = position()
-    if gameCoords[2] > mousePos.x > gameCoords[0]:
+#    pyautogui.onScreen(x, y)
+    mousePos = pyautogui.position()
+    print(mousePos)
+    if gameCoords[2] > mousePos[0] > gameCoords[0]:
         startTime = time.time()
-        screen = np.array(ImageGrab.grab(bbox=gameCoords))
-        screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+        screen = np.array(ImageGrab.grab(bbox=gameCoords)) #take screenshot within gameCoords
+        screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY) #cvtColor(input, output, color)
         for y in range(len(screen)):
             for x in range(len(screen[y])):
                 if screen[y][x] < 10:
