@@ -4,13 +4,16 @@ import sys
 import numpy as np
 import pyscreenshot as ImageGrab
 import cv2
-from pyautogui import click, position, onScreen, FAILSAFE, hotkey
+#from pyautogui import click, position, onScreen, FAILSAFE, hotkey, PAUSE
+import pyautogui
 import time
 
-FAILSAFE() = True
+pyautogui.FAILSAFE = True
 
+input("Start by pressing enter")
+time.sleep(3)
 
-gameCoords = [463, 107, 890, 535] #x and y coordinats to play within
+gameCoords = [463, 107, 890, 535] #(left_x, top_y, right_x, bottom_y)
 
 while True:
 #    onScreen(x, y)
@@ -22,8 +25,11 @@ while True:
         for y in range(len(screen)):
             for x in range(len(screen[y])):
                 if screen[y][x] < 10:
-                    click(x, y)
+                    pyautogui.click(x, y)
+                    time.sleep(2.5) #pause pyautogui for 2.5 sec
                     pass
+        if pyautogui.hotkey(esc):
+            exit()
         print("Frame took {} seconds, hey ther {}".format((time.time() - startTime), "user"))
 
 exit(esc) #Escape program
