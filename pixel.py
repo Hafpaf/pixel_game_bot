@@ -19,7 +19,7 @@ while True:
 #    pyautogui.onScreen(x, y)
     mousePos = pyautogui.position()
     print(mousePos)
-    if gameCoords[2] > mousePos[0] > gameCoords[0]:
+    if gameCoords[2] > mousePos[0] > gameCoords[0]: #mousePos[0] = x coordinate
         startTime = time.time()
         screen = np.array(ImageGrab.grab(bbox=gameCoords)) #take screenshot within gameCoords
         screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY) #cvtColor(input, output, color)
